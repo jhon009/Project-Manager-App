@@ -1,0 +1,15 @@
+.ui-listview > li p.progress-project {
+  position: absolute;
+  top: 32px;
+  right: 45px;
+  background-color: #FF4000;
+  color: #FFF;
+  padding: 3px 6px 4px 7px;
+}
+.ui-listview > li p.progress-project.completo {
+  background-color: #088A4B;
+}
+.panel-left img {
+  margin-bottom: 23px;
+  width: 223px;
+}

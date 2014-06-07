@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mobile</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="cordova.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile-1.4.2.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
+  <script type="text/javascript" src="js/jscripts.js"></script>
+  <script type="text/javascript" src="js/drivescript.js"></script>
+  <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+</head>
+<body>
+
+  <div data-role="page" id="login">
+    <div data-role="content">
+      <h1>Project Manager App</h1>   
+      <form>
+          <label>Usuario</label>
+          <input type="text" class="user">
+          <label>Contraseña</label>
+          <input type="password" class="pass">
+          <span><a href="#registro" data-transition="slide">Registrarse</a></span>
+          <button id="btnlogin">Ingresar</button>
+        </form>
+    </div>
+  </div>
+
+
+  <div data-role="page" id="registro" >
+     <div data-role="content">
+     <form>
+      <label>Nombre</label>
+      <input type="text" class="nombre">
+      <label>Usuario</label>
+      <input type="text" class="user">
+      <label>Correo</label>
+      <input type="text" class="email">
+      <label>Contraseña</label>
+      <input type="password" class="pass">
+      <button id="btnRegistro">Registrase</button>
+     </form>     
+     </div>
+  </div>
+
+  <div data-role="page" id="main" >
+    <div data-role="header" data-position="fixed">
+      <a href="#mypanel" class="ui-btn ui-btn-inline ui-icon-bullets ui-btn-icon-left ui-btn-icon-notext"></a>
+      <h1>Proyectos</h1>
+     <a href="#insertarproyectos" data-transition="slide" class="ui-btn-right ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-right ui-icon-plus ui-btn-icon-notext"></a>
+    </div>    
+    <div data-role="content" class="content">
+
+    </div>
+    <div data-role="panel" id="mypanel" class="panel-left" data-theme="b">
+      <img src="css/images/logo.png" width="223">
+        <ul data-role="listview" class="list-left-widget">
+        </ul>
+    </div>
+  </div>
+
+  <div data-role="page" id="insertarproyectos" >
+    <div data-role="header" data-position="fixed">
+      <a href="#main" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+     <h1>Ingresar proyecto</h1>
+    </div>
+      <div data-role="content" class="content">
+        <form>
+          <label>Nombre del proyecto</label>
+          <input type="text" class="nombreproyecto">
+          <label>Descripción del proyecto</label>
+          <textarea class="description"></textarea>
+          <button id="btnGuardar">Guardar</button>
+       </form>
+      </div>
+  </div>
+
+  <div data-role="page" id="detalleproyecto" >
+    <div data-role="header" data-position="fixed">
+      <a href="#main" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+     <h1>Proyect Nombre</h1>
+    </div>
+      <div data-role="content" class="content">
+        <ul data-role="listview" class="descriptionproject">
+            
+        </ul>
+        <ul data-role="listview">
+          <li><a href="#mainTareas">Tareas</a></li>
+          <!--<li><a href="#">Imágenes</a></li>-->
+          <li><a href="#drive">Drive</a></li>
+        </ul>
+      </div>
+  </div>
+
+  <div data-role="page" id="mainTareas" >
+    <div data-role="header" data-position="fixed">
+      <a href="#detalleproyecto" id="gobackdetail" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+      <h1>Tareas</h1>
+      <a href="#insertartareas" data-transition="slide" class="ui-btn-right ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-right ui-icon-plus ui-btn-icon-notext"></a>
+    </div>
+    <div data-role="content" class="content">
+
+    </div>
+  </div>
+
+  <div data-role="page" id="insertartareas" >
+    <div data-role="header" data-position="fixed">
+      <a href="#mainTareas" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+      <h1>Ingresar Tareas</h1>
+    </div>
+      <div data-role="content" class="content">
+        <form>
+          <label>Tarea</label>
+          <input type="text" class="nombretarea">
+          <label>Descripción del la tarea</label>
+          <textarea class="description"></textarea>
+          <label>Número de Horas estimadas</label>
+          <input type="number" class="estimado">
+          <button id="btnGuardarTarea">Guardar Tarea</button>
+       </form>
+      </div>
+  </div>
+
+  <div data-role="page" id="detalleTarea" >
+    <div data-role="header" data-position="fixed">
+      <a href="#mainTareas" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+      <h1>Ingresar Tareas</h1>
+    </div>
+      <div data-role="content" class="content">
+        <ul data-role="listview" class="descriptiontask">
+            
+        </ul>
+        <button id="btnGuardarProgreso">Guardar progreso</button>
+
+      </div>
+  </div>
+
+  <div data-role="page" id="drive" >
+    <div data-role="header" data-position="fixed">
+      <a href="#detalleproyecto" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+      <h1>Drive</h1>
+    </div>
+      <div data-role="content" class="content">
+        <div>Sube archivos relacionados con tu proyecto desde esta aplicación a Google Drive</div>
+        <input type="file" id="filePicker" style="display: none" />
+        <button id="authorizeButton" >Autorizar</button>
+        <div class="content-drive">
+        </div>
+        <p></p>
+      </div>
+  </div>
+
+
+   <div data-role="page" id="projectmanagerdetail" >
+    <div data-role="header" data-position="fixed">
+      <a href="#main" data-transition="slide" class="ui-btn-left ui-btn ui-btn-a ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-arrow-l ui-btn-icon-notext"></a>
+      <h1>Project Manager App</h1>
+    </div>
+      <div data-role="content" class="content">
+        <div>Aplicación para pequeños empresarios que desean organizar sus proyectos de una manera productiva y rentable.</div>
+      </div>
+  </div>
+
+  <!--TEMPLATES-->
+  <script id="template-list-projects" type="text/x-handlebars-template">
+    {{#list nav}}
+      <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r itemListClick" data-id="{{id_proyecto}}" data-transition="slide">
+        <h2>{{nombre_proyecto}}</h2>
+        <p>Estado del proyecto: {{estado_proyecto}} %</p>
+        <p>horas: {{horas_proyecto}}</p>
+      </a>
+    {{/list}}
+  </script>
+
+  <script id="detalle-proyecto" type="text/x-handlebars-template">
+    <span>{{proyectonombre}}</span>
+  </script>
+
+  <script id="detalle-proyecto-body" type="text/x-handlebars-template">
+    <li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">
+      <h3>Descripción del proyecto:</h3>
+      <p>{{descripcion}}</p>
+      <p><h4>Estado del proyecto:</h4>{{estado}}%</p>
+      <p><h4>Horas invertidas:</h4>{{horas}} horas</p>
+      <p><h4>Fecha de creación:</h4>{{fecha}}</p>
+    </li>
+  </script>
+
+  <script id="template-list-tareas" type="text/x-handlebars-template">
+    {{#list nav}}
+      <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r itemTareaClick" data-id="{{id_tarea}}" data-transition="slide">
+        <h2>{{nombre_tarea}}</h2>
+        <p>horas invertidas: {{horas_usadas}}</p>
+        <p>Horas estimadas: {{estimado_horas}}</p>
+        <p class="progress-project {{estado_tarea}}">{{estado_tarea}}</p>
+      </a>
+    {{/list}}
+  </script>
+
+  <script id="detalle-tarea" type="text/x-handlebars-template">
+    <span>{{tareanombre}}</span>
+  </script>
+
+  <script id="detalle-tarea-body" type="text/x-handlebars-template">
+
+    <li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">
+      <h3>Descripción del la tarea:</h3>
+      <p>{{descripcion}}</p>
+      <h4>Estimado de horas:</h4><span>{{estimado}} horas</span>
+      <h4>Horas usadas:</h4><span><input id="input-val-horas" type="text" value="{{horas}}"></span>
+      <h4>Tarea completada:</h4>
+      <select id="select-based-flipswitch" data-role="flipswitch">
+        <option value="off">No</option>
+        <option value="on">Si</option>
+      </select>
+      <h4>Observaciones:</h4>
+      <textarea id="txt-area">{{observaciones}}</textarea>
+    </li>
+  </script>
+
+  <script id="list-left" type="text/x-handlebars-template">    
+      <li>{{usuario}}</li>
+      <li id="projectmanagerdetail">Project Manager App</li>
+      <li id="logout">Cerrar sesión</li>
+  </script>
+
+  <script id="templateDrive" type="text/x-handlebars-template">
+    {{#list navdrive}}
+      <a href="{{webContentLink}}" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+        <img src="{{thumbnailLink}}">
+        <h2>{{title}}</h2>
+      </a>
+    {{/list}}
+  </script>
+    
+</body>
+</html>
+
