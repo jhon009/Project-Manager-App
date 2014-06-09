@@ -23,7 +23,7 @@ $(function(){
 		}else{
 			$.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/resgitro.php',//poesiagrafica.com
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', nombre: nombre , usuario: user, pass: passmd5, correo: email}
 			})
@@ -57,7 +57,7 @@ $(function(){
 		}else{
 			$.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/login.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', usuario: user, pass: passmd5}
 			})
@@ -100,7 +100,7 @@ $(function(){
 		}else{
 			$.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/insertarproyecto.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', nombreproyecto: nombrepro, description: description, estadoproyecto: 0, horasproyecto: 0, idusuario: insertUser.id_usuario}
 			})
@@ -125,7 +125,7 @@ $(function(){
 		console.log('ingresa getproject'+userId);
 		$.ajax({
 			url: 'http://poesiagrafica.com/ServicioProjecManajer/getprojects.php',
-			type: 'GET',
+			type: 'POST',
 			dataType: 'json',
 			data: {grabar: 'si', idusuario: userId}
 		})
@@ -229,7 +229,7 @@ $(function(){
 	    if (r == true) {
 	        $.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/deleteProject.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', idproyecto: idproject}
 			})
@@ -333,7 +333,7 @@ $(function(){
 		}else{
 			$.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/insertTarea.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', nombretarea: nombreTarea, description: description, estimado: estimado, horas: 0, estado: 'incompleto', observaciones: '', idproject: insertProjectCurrent.id_project}
 			})
@@ -359,7 +359,7 @@ $(function(){
 		console.log('ingresa getproject'+id_project);
 		$.ajax({
 			url: 'http://poesiagrafica.com/ServicioProjecManajer/getTareas.php',
-			type: 'GET',
+			type: 'POST',
 			dataType: 'json',
 			data: {grabar: 'si', id_project: id_project}
 		})
@@ -446,7 +446,7 @@ $(function(){
 
 		$.ajax({
 			url: 'http://poesiagrafica.com/ServicioProjecManajer/updateProject.php',
-			type: 'GET',
+			type: 'POST',
 			dataType: 'json',
 			data: {grabar: 'si', estado: caldiv, horasusadas: numhtotal, idproyecto: insertProjectCurrent.id_project}
 		})
@@ -585,7 +585,7 @@ $(function(){
 
 			$.ajax({
 				url: 'http://poesiagrafica.com/ServicioProjecManajer/updateTareas.php',
-				type: 'GET',
+				type: 'POST',
 				dataType: 'json',
 				data: {grabar: 'si', observaciones: observaciones, horasusadas: horas, estadotarea: progress, idtarea: actualtask.id_tarea}
 			})
